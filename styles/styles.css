@@ -1,0 +1,87 @@
+@font-face {
+    font-family: 'DMSans';
+    src: url(/fonts/DMSans-VariableFont_opsz\,wght.ttf) format(truetype);
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DMSansItalic';
+    src: url(/fonts/DMSans-Italic-VariableFont_opsz\,wght.ttf) format(truetype);
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NotoSansMono';
+    src: url(/fonts/NotoSansMono-VariableFont_wdth\,wght.ttf) format(truetype);
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+    --background-color: #14012b;
+    --secondary-color: #d8ac55;
+    --foreground-color: #ede3d1;
+
+    /* something wrong with this, try and debug */
+    --sanserif: 'DMSans', 'system-ui', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    --mono: 'NotoSansMono', 'system-ui', 'Segoe UI', 'Helvetica Neue', sans-serif;
+
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+
+    --wrapper: 0.5rem;
+    
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+}
+
+
+/* fonts arent working for some reason... don't know what the issue is */
+
+p {
+    font-family: var(--mono);
+    margin: var(--wrapper);
+}
+
+h1 {
+    font-family: var(--sanserif);
+    margin: var(--wrapper);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-top: 2rem;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    flex-wrap: wrap;
+    gap: var(--wrapper);
+    margin: var(--wrapper) 0;
+}
+
+.card-img {
+    height: 250px;
+    width: 200px;
+    object-fit: cover;
+    /* object fit cover so that it wouldn't stretch the images */
+    border: 0.5px solid var(--secondary-color);
+    border-radius: var(--wrapper);
+    background-image: linear-gradient(var(--secondary-color), var(--background-color));
+    /* gradient is light top to bottom */
+}
