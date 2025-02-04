@@ -1,42 +1,24 @@
-/**
- * @description
- * Given a month and day, determine the corresponding Zodiac sign.
- * @param {number} month - month of the year (1-12)
- * @param {number} day - day of the month (1-31)
- * @returns {string} the corresponding Zodiac sign
- */
+// variables needed
+// const birthday;       // user's birthday
+// const birthday_month; // birthday: month value
+// const birthday_day;   // birthday: day value
+// let selected_sign;    // currently selected zodiac sign
 
+let birthday = [10, 17, 2004];
+// let birthday = [x, x, x];
+// should be take data from the date picker and break into the parts of the array
 
-// @ts-chceck
+// const birthday = ["month", "day", "year"];
+const birthday_month = birthday[0];
+const birthday_day = birthday[1];
+// grabs both the day and the month from the array
 
-function getZodiac(month, day) {
-    if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
-      return 'Capricorn';
-    } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
-      return 'Sagittarius';
-    } else if ((month === 10 && day >= 24) || (month === 11 && day <= 21)) {
-      return 'Scorpio';
-    } else if ((month === 9 && day >= 23) || (month === 10 && day <= 23)) {
-      return 'Libra';
-    } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
-      return 'Virgo';
-    } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
-      return 'Leo';
-    } else if ((month === 6 && day >= 22) || (month === 7 && day <= 22)) {
-      return 'Cancer';
-    } else if ((month === 5 && day >= 21) || (month === 6 && day <= 21)) {
-      return 'Gemini';
-    } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
-      return 'Taurus';
-    } else if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
-      return 'Aries';
-    } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
-      return 'Pisces';
-    } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
-      return 'Aquarius';
-    } else return null;
-  }
-  
+// let newArray = birthdayString.split(" ");
+// console.log(birthday_month);
+// console.log(birthday_day);
+
+// let selected_sign = i;
+
 
 const myZodiacSigns = () => { 
   [
@@ -133,4 +115,43 @@ const myZodiacSigns = () => {
     img = "",
     text = "Pisces Dimoo drifts through a magical sea of stars with a little fish friend by their side. Wrapped in flowing fabric that glimmers like water, they’re always lost in dreams and surrounded by ethereal beauty."
   ]
+}
+
+/**
+ * @description
+ * Given a month and day, determine the corresponding Zodiac sign.
+ * @param {number} month - month of the year (1-12)
+ * @param {number} day - day of the month (1-31)
+ * @returns {string} the corresponding Zodiac sign
+ */
+
+
+// @ts-chceck
+
+function getZodiac(month, day) {
+  if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
+    return 'Capricorn';
+  } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
+    return 'Sagittarius';
+  } else if ((month === 10 && day >= 24) || (month === 11 && day <= 21)) {
+    return 'Scorpio';
+  } else if ((month === 9 && day >= 23) || (month === 10 && day <= 23)) {
+    return 'Libra';
+  } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
+    return 'Virgo';
+  } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
+    return 'Leo';
+  } else if ((month === 6 && day >= 22) || (month === 7 && day <= 22)) {
+    return 'Cancer';
+  } else if ((month === 5 && day >= 21) || (month === 6 && day <= 21)) {
+    return 'Gemini';
+  } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
+    return 'Taurus';
+  } else if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
+    return 'Aries';
+  } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
+    return 'Pisces';
+  } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
+    return 'Aquarius';
+  } else return null;
 }

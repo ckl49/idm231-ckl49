@@ -36,16 +36,26 @@ html {
 
     --wrapper: 0.5rem;
     
-    width: 90vw;
-    display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     justify-self: center;
     justify-content: center;
+    margin: var(--wrapper);
 }
 
+* {
+    box-sizing: border-box;    
+}
 
-/* fonts arent working for some reason... don't know what the issue is */
+body {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(6, auto);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.2rem;
+    overflow: hidden;
+    padding: wrapp;
+}
 
 p {
     font-family: var(--mono);
@@ -60,10 +70,15 @@ h1 {
 header {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
+    justify-content: left;
     gap: 0;
     margin-top: 2rem;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 5 span;
 }
+
 
 div {
     display: flex;
