@@ -48,18 +48,19 @@ html {
 }
 
 body {
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(6, auto);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 0.2rem;
+    display: flex;
+    width: 95vw;
+    flex-wrap: wrap;
+    gap: 1.5rem;
     overflow: hidden;
-    padding: wrapp;
+    justify-content: center;
+    padding: var(--wrapper);
 }
 
 p {
     font-family: var(--mono);
-    margin: var(--wrapper);
+    margin-block-end: 1rem;
+    margin-block-start: 0;
 }
 
 h1 {
@@ -70,13 +71,24 @@ h1 {
 header {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: left;
+    align-items: center;
+    justify-content: center;
     gap: 0;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     grid-row-start: 2;
     grid-column-start: 1;
     grid-column-end: 5 span;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    /* gap: var(--wrapper); */
+    overflow: hidden;
+    justify-content: center;
+    /* padding: var(--wrapper); */
+
 }
 
 
@@ -87,16 +99,74 @@ div {
     align-self: center;
     flex-wrap: wrap;
     gap: var(--wrapper);
-    margin: var(--wrapper) 0;
+    /* margin: var(--wrapper) 0; */
 }
 
-.card-img {
-    height: 250px;
-    width: 200px;
-    object-fit: cover;
-    /* object fit cover so that it wouldn't stretch the images */
+.card {
     border: 0.5px solid var(--secondary-color);
     border-radius: var(--wrapper);
     background-image: linear-gradient(var(--secondary-color), var(--background-color));
+    font-family: var(--sanserif);
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: var(--wrapper);
+}
+
+.card-img {
+    height: 30vh;
+    width: 12vw;
+    object-fit: cover;
+    /* object fit cover so that it wouldn't stretch the images */
     /* gradient is light top to bottom */
 }
+
+.flip-card {
+    background-color: transparent;
+    border-radius: var(--wrapper);
+    width: 200px;
+    height: 250px;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+  
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    background-image: linear-gradient(var(--secondary-color), var(--background-color));
+    color: black;
+    border-radius: var(--wrapper);
+
+  }
+  
+  /* Style the back side */
+  .flip-card-back {
+    background-image: linear-gradient(var(--secondary-color), var(--background-color));
+    color: white;
+    transform: rotateY(180deg);
+    border-radius: var(--wrapper);
+
+  }
+  

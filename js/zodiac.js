@@ -4,13 +4,6 @@
 // const birthday_day;   // birthday: day value
 // let selected_sign;    // currently selected zodiac sign
 
-let birthday = [10, 17, 2004];
-// let birthday = [x, x, x];
-// should be take data from the date picker and break into the parts of the array
-
-// const birthday = ["month", "day", "year"];
-const birthday_month = birthday[0];
-const birthday_day = birthday[1];
 // grabs both the day and the month from the array
 
 // let newArray = birthdayString.split(" ");
@@ -20,102 +13,224 @@ const birthday_day = birthday[1];
 // let selected_sign = i;
 
 
-const myZodiacSigns = () => { 
-  [
-    sign = "Aries",
-    title = "The Bold Trailblazer 🌟🐏",
-    sound = '',
-    img = "",
-    text = "Energetic and fearless, Aries Dimoo is always ready to lead the charge! With a fiery personality and a spark in their eyes, they love taking on new adventures, armed with a tiny ram horn headpiece and a blazing torch of ambition."
-  ] , 
+const myZodiacSigns = [
+    {
+      sign: "Aries",
+      title: "The Bold Trailblazer 🌟🐏",
+      sound: '../soundfx/aries_sound.mp3',
+      img: "../graphics/dimoo_aries_edited.png",
+      text:"Energetic and fearless, Aries Dimoo is always ready to lead the charge! With a fiery personality and a spark in their eyes, they love taking on new adventures, armed with a tiny ram horn headpiece and a blazing torch of ambition.",
+    } 
+    , 
 
-  [
-    sign = "Taurus",
-    title = "The Peaceful Dreamer 🌿🐮",
-    sound = "",
-    img = "",
-    text = "Taurus Dimoo loves the finer things in life. Surrounded by blooming flowers and a cozy blanket, they bring a calm, steady energy wherever they go. This little dreamer always has a teacup and a soft pillow nearby for maximum comfort."
-  ] ,
+    {
+      sign : "Taurus",
+      title : "The Peaceful Dreamer 🌿🐮",
+      sound : "../soundfx/taurus_sound.mp3",
+      img : "../graphics/dimoo_taurus_edited.png",
+      text : "Taurus Dimoo loves the finer things in life. Surrounded by blooming flowers and a cozy blanket, they bring a calm, steady energy wherever they go. This little dreamer always has a teacup and a soft pillow nearby for maximum comfort.",
+    }
+   ,
 
-  [
-    sign = "Gemini – The Charming Twin ✨👯",
-    sound = "",
-    img = "",
-    text = "With a mischievous smile and a dual-colored hat, Gemini Dimoo can charm anyone with their quick wit and endless curiosity. They carry a book of riddles in one hand and a kite in the other, ready to switch between fun and intellect at a moment’s notice."
-  ] ,
-
-  [
-    sign = "Cancer",
-    title = "The Moonlit Protector 🌙🦀",
-    sound = "",
-    img = "",
-    text = "Under the gentle glow of the moon, Cancer Dimoo radiates warmth and care. They hold a tiny crab companion close and wear a shimmering shell cape, always ready to protect those they love while daydreaming by the seaside."
-  ] ,
   
-  [
-    sign = "Leo",
-    title= "The Radiant Star 🌞🦁",
-    sound = "",
-    img = "",
-    text = "Leo Dimoo shines with a golden crown and a dazzling mane. Their confident smile lights up any room, and they love sharing their creative energy. With a sun charm in their hand, they remind everyone to shine their brightest."
-  ] ,
+    { 
+      sign : "Gemini",
+      title : "The Charming Twin ✨👯",
+      sound : "../soundfx/gemini_sound.mp3",
+      img : "../graphics/dimoo_gemini_edited.png",
+      text : "With a mischievous smile and a dual-colored hat, Gemini Dimoo can charm anyone with their quick wit and endless curiosity. They carry a book of riddles in one hand and a kite in the other, ready to switch between fun and intellect at a moment’s notice.",
+    }
+   ,
 
-  [
-    sign = "Virgo",
-    title = "The Pure Perfectionist 🌾🌸",
-    sound = "",
-    img = "",
-    text = "With a bouquet of wheat and daisies in hand, Virgo Dimoo is an embodiment of grace and detail. They wear a delicate floral headband, always striving to make the world a more beautiful and organized place."
-  ] ,
+  
+    {
+      sign : "Cancer",
+      title : "The Moonlit Protector 🌙🦀",
+      sound : "../soundfx/cancer_sound.mp3",
+      img : "../graphics/dimoo_cancer_edited.png",
+      text : "Under the gentle glow of the moon, Cancer Dimoo radiates warmth and care. They hold a tiny crab companion close and wear a shimmering shell cape, always ready to protect those they love while daydreaming by the seaside.",
+    }
+   ,
+  
+  
+    {
+      sign : "Leo",
+      title : "The Radiant Star 🌞🦁",
+      sound : "../soundfx/leo_sound.mp3",
+      img : "../graphics/dimoo_leo_edited.png",
+      text : "Leo Dimoo shines with a golden crown and a dazzling mane. Their confident smile lights up any room, and they love sharing their creative energy. With a sun charm in their hand, they remind everyone to shine their brightest.",
+    }
+   ,
 
-  [
-    sign = "Libra",
-    title = "The Harmonious Charmer ⚖️💖",
-    sound = "",
-    img = "",
-    text = "Balanced and graceful, Libra Dimoo carries a golden scale in one hand and a bouquet of roses in the other. With a soft smile, they love spreading harmony and creating connections wherever they go."
-  ] ,
+  
+    { 
+      sign : "Virgo",
+      title : "The Pure Perfectionist 🌾🌸",
+      sound : "../soundfx/virgo_sound.mp3",
+      img : "../graphics/dimoo_virgo_edited.png",
+      text : "With a bouquet of wheat and daisies in hand, Virgo Dimoo is an embodiment of grace and detail. They wear a delicate floral headband, always striving to make the world a more beautiful and organized place.",
+    }
+   ,
 
-  [
-    sign = "Scorpio",
-    title = "The Mysterious Alchemist 🦂🖤",
-    sound = "",
-    img = "",
-    text = "Wrapped in shadows and mystery, Scorpio Dimoo wields a tiny potion bottle filled with shimmering secrets. A scorpion tail peeks out from their cloak, hinting at their intensity and depth."
-  ] ,
+    {
+      sign : "Libra",
+      title : "The Harmonious Charmer ⚖️💖",
+      sound : "../soundfx/libra_sound.mp3",
+      img : "../graphics/dimoo_libra_edited.png",
+      text : "Balanced and graceful, Libra Dimoo carries a golden scale in one hand and a bouquet of roses in the other. With a soft smile, they love spreading harmony and creating connections wherever they go.",
+    }
+   ,
 
-  [
-    sign = "Sagittarius",
-    title = "The Wanderlust Explorer 🎯🏹",
-    sound = "",
-    img = "",
-    text = "Sagittarius Dimoo dons a feathered hat and carries a tiny bow and arrow, always ready to aim for their dreams. With a map in their pocket and stars in their eyes, they’re on a quest to explore new horizons."
-  ] ,
+    {
+      sign : "Scorpio",
+      title : "The Mysterious Alchemist 🦂🖤",
+      sound : "../soundfx/scorpio_sound.mp3",
+      img : "../graphics/dimoo_scorpio_edited.png",
+      text : "Wrapped in shadows and mystery, Scorpio Dimoo wields a tiny potion bottle filled with shimmering secrets. A scorpion tail peeks out from their cloak, hinting at their intensity and depth.",
+    }
+   ,
 
-  [
-    sign = "Capricorn",
-    title = "The Ambitious Mountain Climber ⛰️🐐",
-    sound = "",
-    img = "",
-    text = "Capricorn Dimoo wears a sturdy hiking outfit and carries a tiny staff, symbolizing their climb to success. With determination in their heart and stars on their boots, they’ll conquer every mountain—literal or metaphorical."
-  ] ,
+  
+    {
+    sign : "Sagittarius",
+    title : "The Wanderlust Explorer 🎯🏹",
+    sound : "../soundfx/sagittarius_sound.mp3",
+    img : "../graphics/dimoo_sagittarius_edited.png",
+    text : "Sagittarius Dimoo dons a feathered hat and carries a tiny bow and arrow, always ready to aim for their dreams. With a map in their pocket and stars in their eyes, they’re on a quest to explore new horizons.",
+    }
+   ,
 
-  [
-    sign = "Aquarius",
-    title = "The Cosmic Visionary 🌊🌌",
-    sound = "",
-    img = "",
-    text = "Aquarius Dimoo carries a vessel of shimmering water, pouring creativity and innovation wherever they go. Dressed in futuristic robes adorned with stars, they love sharing their unique ideas with the world."
-  ] ,
+    {
+      sign :"Capricorn",
+      title : "The Ambitious Mountain Climber ⛰️🐐",
+      sound : "../soundfx/capricorn_sound.mp3",
+      img : "../graphics/dimoo_capricorn_edited.png",
+      text : "Capricorn Dimoo wears a sturdy hiking outfit and carries a tiny staff, symbolizing their climb to success. With determination in their heart and stars on their boots, they’ll conquer every mountain—literal or metaphorical.",
+    }
+   ,
 
-  [
-    sign = "Pisces",
-    title = "The Dreamy Mystic 🐠💫",
-    sound = "",
-    img = "",
-    text = "Pisces Dimoo drifts through a magical sea of stars with a little fish friend by their side. Wrapped in flowing fabric that glimmers like water, they’re always lost in dreams and surrounded by ethereal beauty."
-  ]
+    {
+      sign : "Aquarius",
+      title : "The Cosmic Visionary 🌊🌌",
+      sound : "../soundfx/aquarius_sound.mp3",
+      img : "../graphics/dimoo_aquarius_edited.png",
+      text :"Aquarius Dimoo carries a vessel of shimmering water, pouring creativity and innovation wherever they go. Dressed in futuristic robes adorned with stars, they love sharing their unique ideas with the world.",
+    }
+   ,
+
+    {
+      sign : "Pisces",
+      title : "The Dreamy Mystic 🐠💫",
+      sound : "../soundfx/pisces_sound.mp3",
+      img : "../graphics/dimoo_pisces_edited.png",
+      text : "Pisces Dimoo drifts through a magical sea of stars with a little fish friend by their side. Wrapped in flowing fabric that glimmers like water, they’re always lost in dreams and surrounded by ethereal beauty.",
+    }
+];
+
+// to stop all sounds when another is pressed, called in the create button
+
+let all_sounds = []
+
+function stop_all_sounds () {
+  all_sounds.forEach((sound) => {
+    sound.pause();
+    sound.currentTime = 0;
+  });
 }
+
+// to create image seperately outside of the create button function to abstract
+
+function create_image (zodiacSignImgFile, zodiacSignFile) {
+  const img = document.createElement('img');
+  img.src = zodiacSignImgFile;
+  img.alt = zodiacSignFile;
+  img.className = 'card-img';
+  return img;
+}
+
+// main function to create each button on the screen of each zodiac
+
+function create_button(zodiacSoundFile, zodiacSignFile, zodiacSignImgFile) {
+  // console.log('zodiac.sound', zodiacSoundFile);
+  const btn = document.createElement('button');
+  btn.className = 'card'
+  btn.textContent = zodiacSignFile;
+
+  const img = create_image(zodiacSignImgFile, zodiacSignFile);
+  btn.appendChild(img);
+
+  const audio = new Audio(zodiacSoundFile);
+  all_sounds.push(audio);
+  
+
+  btn.addEventListener('click', () => {
+    stop_all_sounds();
+    audio.play();
+  });
+
+  document.body.appendChild(btn);
+}
+
+// this just calls the init and creates the create the buttons, takes 3 inputs to show 
+
+function initialize () {
+  myZodiacSigns.forEach((zodiac) => {
+    create_button(zodiac.sound, zodiac.sign, zodiac.img);
+
+    // console.log(zodiac);
+  })
+}
+
+// need to handle form submission
+
+const errors = [];
+
+// if (form.elements[birthday].value = mm/dd/yyyy) {
+//    errors.push('Please enter your birthdate');
+//    form.elements[birthday_submit].focus();
+// }
+
+const form = document.querySelector('form');
+const error_list = document.querySelector('.errors');
+
+function submission (event) {
+  event.preventDefault();
+  const birthday = form.elements['birthday'].value;
+  console.log(birthday);
+}
+
+if (form) {
+  form.addEventListener('submit', submission);
+}
+
+// to start initialize when window loads 
+window.addEventListener('load', initialize);
+
+// will now start writing the main code for when date is entered
+
+// function split_date 
+
+function log_birthday () {
+  console.log(birthday);
+  const date = {
+    birthday : [0],
+    month : [1],
+    day : [2],
+  };
+}
+
+function birthday_submit () {
+  const btn = document.getElementById('submit-birthday');
+  const date = document.getElementById('birthday')
+}
+
+  // btn.addEventListener('click', ( => {
+
+//   });
+// }
+
+
+birthday_submit();
 
 /**
  * @description
@@ -155,3 +270,16 @@ function getZodiac(month, day) {
     return 'Aquarius';
   } else return null;
 }
+
+
+// function create_button () {
+//   const button_element = document.createElement('button');
+//   button_element.innerHTML = 'Select me';
+//   button_element.addEventListener('click', () => {
+//     window.alert('you clicked me');
+//   });
+
+//   document.body.appendChild(button_element);
+// }
+
+// create_button();
