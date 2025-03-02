@@ -12,7 +12,6 @@
 
 // let selected_sign = i;
 
-
 const myZodiacSigns = [
     {
       sign: "Aries",
@@ -127,6 +126,46 @@ const myZodiacSigns = [
     }
 ];
 
+
+/**
+ * @description
+ * Given a month and day, determine the corresponding Zodiac sign.
+ * @param {number} month - month of the year (1-12)
+ * @param {number} day - day of the month (1-31)
+ * @returns {string} the corresponding Zodiac sign
+ */
+
+
+// @ts-chceck
+
+function getZodiac(month, day) {
+  if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
+    return 'Capricorn';
+  } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
+    return 'Sagittarius';
+  } else if ((month === 10 && day >= 24) || (month === 11 && day <= 21)) {
+    return 'Scorpio';
+  } else if ((month === 9 && day >= 23) || (month === 10 && day <= 23)) {
+    return 'Libra';
+  } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
+    return 'Virgo';
+  } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
+    return 'Leo';
+  } else if ((month === 6 && day >= 22) || (month === 7 && day <= 22)) {
+    return 'Cancer';
+  } else if ((month === 5 && day >= 21) || (month === 6 && day <= 21)) {
+    return 'Gemini';
+  } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
+    return 'Taurus';
+  } else if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
+    return 'Aries';
+  } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
+    return 'Pisces';
+  } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
+    return 'Aquarius';
+  } else return null;
+}
+
 // to stop all sounds when another is pressed, called in the create button
 
 let all_sounds = []
@@ -176,8 +215,6 @@ function create_button(zodiacSoundFile, zodiacSignFile, zodiacSignImgFile) {
 function initialize () {
   myZodiacSigns.forEach((zodiac) => {
     create_button(zodiac.sound, zodiac.sign, zodiac.img);
-
-    // console.log(zodiac);
   })
 }
 
@@ -193,15 +230,60 @@ const errors = [];
 const form = document.querySelector('form');
 const error_list = document.querySelector('.errors');
 
-function submission (event) {
+// event > form > input
+// year month day value of input
+// listening for when the form is submitted, it'll refersh
+
+let birthdate = [];
+
+function handle_submit(event) {
   event.preventDefault();
-  const birthday = form.elements['birthday'].value;
-  console.log(birthday);
+  // console.log(form.elements);
+  // console.log(form);
+  // console.log(form.elements['birthdate'].value.split('-'));
+  const birthdate = form.elements['birthdate'].value.split('-');
+  console.log(birthdate);
+  const month = birthdate[1];
+  const day = birthdate[2];
+  // console.log(typeof month);
+  const month_nbr = Number(month);
+  const day_nbr = Number(day);
+  // console.log(typeof month_nbr);
+  const zodiacAnswer = getZodiac(month_nbr, day_nbr);
+  checkZodiacMatch(zodiacAnswer);
+  // console.log(userSign);
 }
 
-if (form) {
-  form.addEventListener('submit', submission);
+function checkZodiacMatch (zodiacAnswer) {
+  const userSign = myZodiacSigns.find(zodiac => zodiac.sign === zodiacAnswer);
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  const zodiacH1 = userSign[0]; 
+  const heading1 = document.createElement('h1');
+  heading1.textContent = `${zodiacH1}`;
+  document.overlay.appendChild(heading1);
+  console.log(heading1)
 }
+
+// function create_overlay (zodiacSign, zodiacImg, zodiacTitle, zodiacText) {
+//   document.getElementById('overlay');
+//   const zodiacSign = userSign[0];
+//   const zodiacH1 = document.createElement('h1');
+//   zodiacH1 = `${zodiacSign}`;
+//   overlayDiv.appendChild(newH1);
+  
+
+//   const zodiacImg = userSign[3];
+//   const zodiacTitle = userSign[1];
+//   const zodiacText = userSign[4];
+
+  
+// }
+
+
+if (form) {
+  form.addEventListener('submit', handle_submit);
+} 
 
 // to start initialize when window loads 
 window.addEventListener('load', initialize);
@@ -210,76 +292,4 @@ window.addEventListener('load', initialize);
 
 // function split_date 
 
-function log_birthday () {
-  console.log(birthday);
-  const date = {
-    birthday : [0],
-    month : [1],
-    day : [2],
-  };
-}
 
-function birthday_submit () {
-  const btn = document.getElementById('submit-birthday');
-  const date = document.getElementById('birthday')
-}
-
-  // btn.addEventListener('click', ( => {
-
-//   });
-// }
-
-
-birthday_submit();
-
-/**
- * @description
- * Given a month and day, determine the corresponding Zodiac sign.
- * @param {number} month - month of the year (1-12)
- * @param {number} day - day of the month (1-31)
- * @returns {string} the corresponding Zodiac sign
- */
-
-
-// @ts-chceck
-
-function getZodiac(month, day) {
-  if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
-    return 'Capricorn';
-  } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
-    return 'Sagittarius';
-  } else if ((month === 10 && day >= 24) || (month === 11 && day <= 21)) {
-    return 'Scorpio';
-  } else if ((month === 9 && day >= 23) || (month === 10 && day <= 23)) {
-    return 'Libra';
-  } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
-    return 'Virgo';
-  } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
-    return 'Leo';
-  } else if ((month === 6 && day >= 22) || (month === 7 && day <= 22)) {
-    return 'Cancer';
-  } else if ((month === 5 && day >= 21) || (month === 6 && day <= 21)) {
-    return 'Gemini';
-  } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
-    return 'Taurus';
-  } else if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
-    return 'Aries';
-  } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
-    return 'Pisces';
-  } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
-    return 'Aquarius';
-  } else return null;
-}
-
-
-// function create_button () {
-//   const button_element = document.createElement('button');
-//   button_element.innerHTML = 'Select me';
-//   button_element.addEventListener('click', () => {
-//     window.alert('you clicked me');
-//   });
-
-//   document.body.appendChild(button_element);
-// }
-
-// create_button();

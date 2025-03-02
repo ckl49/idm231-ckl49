@@ -121,52 +121,15 @@ div {
     /* gradient is light top to bottom */
 }
 
-.flip-card {
-    background-color: transparent;
-    border-radius: var(--wrapper);
-    width: 200px;
-    height: 250px;
-    perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  }
-  
-  /* This container is needed to position the front and back side */
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-  }
-  
-  /* Do an horizontal flip when you move the mouse over the flip box container */
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  /* Position the front and back side */
-  .flip-card-front, .flip-card-back {
+.overlay {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden;
-  }
-  
-  /* Style the front side (fallback if image is missing) */
-  .flip-card-front {
-    background-image: linear-gradient(var(--secondary-color), var(--background-color));
-    color: black;
+    width: 50vw;
+    height: 50vw;
+    display: block;
+    background: #14012b;
+    border: var(--secondary-color);
     border-radius: var(--wrapper);
-
-  }
-  
-  /* Style the back side */
-  .flip-card-back {
-    background-image: linear-gradient(var(--secondary-color), var(--background-color));
-    color: white;
-    transform: rotateY(180deg);
-    border-radius: var(--wrapper);
-
-  }
+    padding: var(--wrapper);
+    display: none;
+}
   
