@@ -242,29 +242,11 @@ const error_list = document.querySelector('.errors');
 
 let birthdate = [];
 
-function handle_submit(event) {
-  event.preventDefault();
-  // console.log(form.elements);
-  // console.log(form);
-  // console.log(form.elements['birthdate'].value.split('-'));
-  const birthdate = form.elements['birthdate'].value.split('-');
-  console.log(birthdate);
-  const month = birthdate[1];
-  const day = birthdate[2];
-  // console.log(typeof month);
-  const month_nbr = Number(month);
-  const day_nbr = Number(day);
-  // console.log(typeof month_nbr);
-  const zodiacAnswer = getZodiac(month_nbr, day_nbr);
-  checkZodiacMatch(zodiacAnswer);
-    // console.log(userSign);
-}
+// function 
 
-const overlay_div = document.getElementById('overlay');
+const overlay_div = document.getElementById('container');
 const overlay_text_div = document.getElementById('overlay-content');
 const overlay_img_div = document.getElementById('overlay-img')
-
-
 
 function checkZodiacMatch (zodiacAnswer) {
   const userSign = myZodiacSigns.find(zodiac => zodiac.sign === zodiacAnswer);
@@ -288,51 +270,43 @@ function checkZodiacMatch (zodiacAnswer) {
   new_text.textContent = userSign.text;
   overlay_text_div.appendChild(new_text);
 
+  // const close_btn = document.createElement('button');
+  // close_btn.innerText = 'Close';
+  // overlay_text_div.appendChild(close_btn);
 
-  // let overlay_title = userSign.title;
-  // let overlay_img = userSign.img;
-  // let overlay_text = userSign.text;
-  
-  
-  //   const overlay = document.createElement('div');
-//   overlay.className = 'overlay';
-//   const zodiacH1 = userSign[0]; 
-//   const heading1 = document.createElement('h1');
-//   heading1.textContent = `${zodiacH1}`;
-//   document.overlay.appendChild(heading1);
-//   console.log(heading1)
+  const audio = new Audio(userSign.sound);
+  all_sounds.push(audio);
+  stop_all_sounds();
+  audio.play();
+
+  // return [userSign.img, userSign.sign, userSign.title, userSign.text];
 }
 
-// function create_overlay (zodiacSign, zodiacImg, zodiacTitle, zodiacText) {
-//   document.getElementById('overlay');
-//   const zodiacSign = userSign[0];
-//   const zodiacH1 = document.createElement('h1');
-//   zodiacH1 = `${zodiacSign}`;
-//   overlayDiv.appendChild(newH1);
-  
 
-//   const zodiacImg = userSign[3];
-//   const zodiacTitle = userSign[1];
-//   const zodiacText = userSign[4];
+function handle_submit(event) {
+  event.preventDefault();
+  const birthdate = form.elements['birthdate'].value.split('-');
+  console.log(birthdate);
+  const month = birthdate[1];
+  const day = birthdate[2];
+  // console.log(typeof month);
+  const month_nbr = Number(month);
+  const day_nbr = Number(day);
+  // console.log(typeof month_nbr);
+  const zodiacAnswer = getZodiac(month_nbr, day_nbr);
+  const zodiacOverlay = checkZodiacMatch(zodiacAnswer);
+  // showOverlay(zodiacOverlay);
 
-  
-// }
+  show_overlay();
+}
 
-
-// function show_overlay() {
-//   if (container) 
-//   {const btn = document.getElementsByName('submit');
-//   const overlay = document.getElementById('container');
-
-//   btn.addEventListener('click', () => {
-//     console.log('this works');
-//     // overlay.style.display = 'flex';}
-//   });
-// }
-
-// }
-
-// show_overlay();
+function show_overlay(event) {
+  if (overlay_div.style.display === 'none' || overlay_div.style.display === '') {
+    overlay_div.style.display = 'flex'; // Change display to flex
+  } else {
+    overlay_div.style.display = 'none';
+  }
+}
 
 if (form) {
   form.addEventListener('submit', handle_submit);

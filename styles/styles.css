@@ -153,13 +153,13 @@ div {
 }
 
 #container {
-    display: flex;
+    display: none;
     flex-direction: row;
     position: absolute;
-    bottom: 30vh;
+    bottom: 20vh;
     left: 20vw;
     width: 60vw;
-    height: 50vh;
+    height: 60vh;
     padding: var(--wrapper);
     background: #14012b;
     border-color: var(--secondary-color);
