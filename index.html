@@ -13,16 +13,20 @@
     <header>
         <h1>Dimoo Zodiac Series</h1>
         <p>Enter your birthday and see which Dimoo you get!</p> 
-        <form>
+        <div class="input+button">
+          <form>
             <label for="birthday">Birthday:</label>
             <input type="date" id="birthdate" name="birthday">
-            <button type="submit" id="button-birthday">Submit</button>
-        </form>
+            <button class="button" type="submit" id="button-birthday">Submit</button>
+          </form>
+          <button class="help-button">Need Help?</button>
+          
+        </div>
         <ul class="errors" hidden></ul>
     </header>
 
    <main>
-      <div id="container">
+      <div id="container" class="container">
         <div id="overlay-img"></div>
         <div id="overlay-content"></div>
       </div>

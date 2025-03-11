@@ -177,43 +177,21 @@ function stop_all_sounds () {
   });
 }
 
-function clear_overlay () {
-  const overlay = document.getElementById('container');
-  overlay.length = 0;
+function clear_overlay() {
+  overlay_img_div.innerHTML = '';
+  overlay_text_div.innerHTML = '';
+  document.body.classList.remove("overlay-active"); // Removes blur effect
+
 }
+// clear the info
 
 // to create image seperately outside of the create button function to abstract
-
 function create_image (zodiacSignImgFile, zodiacSignFile) {
   const img = document.createElement('img');
   img.src = zodiacSignImgFile;
   img.alt = zodiacSignFile;
   img.className = 'card-img';
   return img;
-}
-
-// main function to create each button on the screen of each zodiac
-
-function create_button(zodiacSoundFile, zodiacSignFile, zodiacSignImgFile) {
-  // console.log('zodiac.sound', zodiacSoundFile);
-  const btn = document.createElement('button');
-  btn.className = 'card'
-  btn.textContent = zodiacSignFile;
-
-  const img =  create_image(zodiacSignImgFile, zodiacSignFile);
-  btn.appendChild(img);
-
-  const audio = new Audio(zodiacSoundFile);
-  all_sounds.push(audio);
-  
-  
-
-  btn.addEventListener('click', () => {
-    stop_all_sounds();
-    audio.play();
-  });
-
-  document.body.appendChild(btn);
 }
 
 // this just calls the init and creates the create the buttons, takes 3 inputs to show 
@@ -251,7 +229,9 @@ const overlay_img_div = document.getElementById('overlay-img')
 function checkZodiacMatch (zodiacAnswer) {
   const userSign = myZodiacSigns.find(zodiac => zodiac.sign === zodiacAnswer);
   console.log(userSign);
-  // let overlay_h1 = userSign.sign;
+
+  clear_overlay();
+  
   const new_img = document.createElement('img');
   new_img.src = userSign.img;
   new_img.alt = userSign.sign;
@@ -270,18 +250,43 @@ function checkZodiacMatch (zodiacAnswer) {
   new_text.textContent = userSign.text;
   overlay_text_div.appendChild(new_text);
 
-  // const close_btn = document.createElement('button');
-  // close_btn.innerText = 'Close';
-  // overlay_text_div.appendChild(close_btn);
+  const close_btn = document.createElement('button');
+  close_btn.className = "button";
+  close_btn.innerText = 'Close';
+  overlay_text_div.appendChild(close_btn);
+
+  close_btn.addEventListener('click', () => {
+    overlay_div.style.display = 'none';
+    clear_overlay();
+    stop_all_sounds();
+  });
 
   const audio = new Audio(userSign.sound);
   all_sounds.push(audio);
   stop_all_sounds();
   audio.play();
-
-  // return [userSign.img, userSign.sign, userSign.title, userSign.text];
 }
 
+// main function to create each button on the screen of each zodiac
+function create_button(zodiacSoundFile, zodiacSignFile, zodiacSignImgFile) {
+  // console.log('zodiac.sound', zodiacSoundFile);
+  const btn = document.createElement('button');
+  btn.className = 'card'
+  btn.textContent = zodiacSignFile;
+
+  const img =  create_image(zodiacSignImgFile, zodiacSignFile);
+  btn.appendChild(img);
+
+  const audio = new Audio(zodiacSoundFile);
+  all_sounds.push(audio);
+  
+  btn.addEventListener('click', () => {
+    checkZodiacMatch(zodiacSignFile);
+    show_overlay();
+  });
+
+  document.body.appendChild(btn);
+}
 
 function handle_submit(event) {
   event.preventDefault();
@@ -300,9 +305,12 @@ function handle_submit(event) {
   show_overlay();
 }
 
+// const body = document.getElementsByName('body');
+
 function show_overlay(event) {
   if (overlay_div.style.display === 'none' || overlay_div.style.display === '') {
     overlay_div.style.display = 'flex'; // Change display to flex
+    document.body.classList.add("overlay-active"); // Adds blur effect
   } else {
     overlay_div.style.display = 'none';
   }
@@ -315,8 +323,6 @@ if (form) {
 // to start initialize when window loads 
 window.addEventListener('load', initialize);
 
-// will now start writing the main code for when date is entered
 
-// function split_date 
 
 
