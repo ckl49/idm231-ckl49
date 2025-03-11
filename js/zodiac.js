@@ -216,7 +216,7 @@ const error_list = document.querySelector('.errors');
 
 // event > form > input
 // year month day value of input
-// listening for when the form is submitted, it'll refersh
+// listening for when the form is submitted, it'll refresh
 
 let birthdate = [];
 
@@ -290,22 +290,61 @@ function create_button(zodiacSoundFile, zodiacSignFile, zodiacSignImgFile) {
 
 function handle_submit(event) {
   event.preventDefault();
-  const birthdate = form.elements['birthdate'].value.split('-');
-  console.log(birthdate);
-  const month = birthdate[1];
-  const day = birthdate[2];
-  // console.log(typeof month);
-  const month_nbr = Number(month);
-  const day_nbr = Number(day);
-  // console.log(typeof month_nbr);
-  const zodiacAnswer = getZodiac(month_nbr, day_nbr);
-  const zodiacOverlay = checkZodiacMatch(zodiacAnswer);
-  // showOverlay(zodiacOverlay);
+  console.log(form.elements['birthdate'].value);
 
-  show_overlay();
+  if (form.elements['birthdate'].value === '') {
+    console.log('error, no birthday inputted');
+    alert('Please enter a birthdate before submitting. Zodiac signs are special to you and based on your specific birthdate.');
+  } else {
+    const birthdate = form.elements['birthdate'].value.split('-');
+  
+    console.log(birthdate);
+    const month = birthdate[1];
+    const day = birthdate[2];
+    // console.log(typeof month);
+    const month_nbr = Number(month);
+    const day_nbr = Number(day);
+    // console.log(typeof month_nbr);
+    const zodiacAnswer = getZodiac(month_nbr, day_nbr);
+    const zodiacOverlay = checkZodiacMatch(zodiacAnswer);
+    // showOverlay(zodiacOverlay);
+  
+    show_overlay();
+
+  }
+
 }
 
 // const body = document.getElementsByName('body');
+const help_btn = document.querySelector('.help-button');
+const help_container = document.querySelector('#help-container');
+
+if (help_btn) {}
+  help_btn.addEventListener ('click', () => {
+    if (help_container.style.display === 'none' || help_container.style.display === '') {
+      help_container.style.display = 'flex'; // Change display to flex
+    } else {
+      help_container.style.display = 'none';
+}})
+
+const help_close_btn = document.querySelector('.help-close-button')
+
+if (help_close_btn) {}
+  help_close_btn.addEventListener ('click', () => {
+    if (help_container.style.display === 'flex') {
+      help_container.style.display = 'none';
+}})
+
+
+// function need_help() {
+
+//   help_btn.addEventListener('click', () => {
+//     console.log('button is pressed');
+    
+//   })
+// }
+
+// need_help();
 
 function show_overlay(event) {
   if (overlay_div.style.display === 'none' || overlay_div.style.display === '') {

@@ -52,7 +52,7 @@ body {
     width: 95vw;
     flex-wrap: wrap;
     gap: 1.5rem;
-    overflow: hidden;
+    /* overflow: hidden; */
     justify-content: center;
     padding: var(--wrapper);
 }
@@ -80,7 +80,7 @@ h2 {
 
 header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 0;
@@ -118,6 +118,31 @@ label {
 
 input {
     padding: 0.25rem var(--wrapper);
+    font-family: var(--mono);
+    color: #14012b;
+    background-color: #ede3d1;
+    border-radius: var(--wrapper);
+    margin-right: 0;
+    border: solid;
+    border-color: #d8ac55;
+    border-width: 1px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    /* gap: var(--wrapper); */
+    gap: 0;
+    padding-top: var(--wrapper);
+
+    h1{
+        margin: 0
+    }
+
+    p {
+        margin-block-end: 1rem
+    }
 }
 
 .card {
@@ -152,6 +177,11 @@ input {
     background-color: #14012b; 
 }
 
+.button:active {
+    background-color: #ede3d1;
+    color: #14012b;
+}
+
 .help-button {
     color: #d8ac55;
     background-color: #14012b;
@@ -168,6 +198,31 @@ input {
     background-color: #d8ac55; 
 }
 
+.help-button:active {
+    background-color: #ede3d1;
+    color: #14012b;
+}
+
+.help-close-button {
+    color: #d8ac55;
+    background-color: #14012b;
+    padding: 0.4rem 1rem;
+    font-family: var(--mono);
+    border-width: 1px;
+    border-radius: var(--wrapper);
+    border-color: #d8ac55;
+    cursor: cell;
+}
+
+.help-close-button:hover {
+    color: #14012b;
+    background-color: #d8ac55; 
+}
+
+.help-close-button:active {
+    background-color: #ede3d1;
+    color: #14012b;
+}
 
 .card-img {
     height: 30vh;
@@ -213,3 +268,37 @@ input {
     z-index: 2;
     box-shadow: 6px 6px 20px 10px rgba(0, 0, 0, 0.4);
 }
+
+#help-container {
+    display: none;
+    flex-direction: column;
+    align-items: baseline;
+    gap: var(--wrapper);
+    width: 40vw;    
+    animation: 3s linear 1s slide-in;
+    padding-left: 2rem;
+    margin: 2rem;
+
+    border-left: 1px solid #d8ac55;
+    
+    h1 {
+        margin-bottom: 0;
+    }
+
+    li {
+        width: 50ch;
+        font-family: var(--sanserif);
+        line-height: 1.5rem;
+        margin-bottom: 0.2rem;
+    }
+
+    ul {
+        list-style:decimal-leading-zero;
+        margin: 0;
+    }
+
+    p {
+        font-family: var(--mono);
+    }
+}
+
